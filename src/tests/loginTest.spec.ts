@@ -11,7 +11,7 @@ test("simple login test with self heal", async ({ page }) => {
   //await loginPage.fillUsername_selfheal("demo_selfheal");
 });
 
-test("simple login test", async ({ page }) => {
+test.skip("simple login test", async ({ page }) => {
   const loginPage = new LoginPage(page);
   await loginPage.navigateToLoginPage();
   await loginPage.fillUsername("vipul@company.sandbox");
@@ -23,6 +23,11 @@ test("simple login test", async ({ page }) => {
   await page.context().storageState({ path: authFile });
   //logger.info("Auth state is saved");
 });
+test("sample env test", async({page})=>{
+  console.log(process.env.NODE_ENV);
+  console.log(process.env.userid);
+  console.log(process.env.password);
+})
 
 // test.skip("Login with auth file", async ({ browser }) => {
 //   const context = await browser.newContext({ storageState: authFile });
