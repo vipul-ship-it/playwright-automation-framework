@@ -11,11 +11,11 @@ test("simple login test with self heal", async ({ page }) => {
   //await loginPage.fillUsername_selfheal("demo_selfheal");
 });
 
-test.skip("simple login test", async ({ page }) => {
+test("simple login test", async ({ page }) => {
   const loginPage = new LoginPage(page);
   await loginPage.navigateToLoginPage();
-  await loginPage.fillUsername("vipul@company.sandbox");
-  await loginPage.fillPassword("MovieNight@8pm");
+  await loginPage.fillUsername(process.env.userid!);//! is for not null value in TS 
+  await loginPage.fillPassword(process.env.password!);//process.env is used in Node.jsto access environment variables, which are key-value pairs
   
   const homePage = await loginPage.clickLoginButton();
   await homePage.expectServiceTitleToBeVisible();
